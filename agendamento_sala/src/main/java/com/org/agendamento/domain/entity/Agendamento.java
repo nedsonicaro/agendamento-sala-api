@@ -3,14 +3,14 @@ package com.org.agendamento.domain.entity;
 import com.org.agendamento.domain.entity.enums.Horario;
 import com.org.agendamento.domain.entity.enums.Turno;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
+@Getter
+@Setter
 @Entity
 @Builder
 @Table(name = "agendamento")
@@ -20,7 +20,7 @@ public class Agendamento implements Serializable {
 
     @Id
     @Column(name = "id_agendamento", nullable = false)
-    private UUID id = UUID.randomUUID();
+    private final UUID id = UUID.randomUUID();
 
     @ManyToOne
     @JoinColumn(name = "id_sala", nullable = false)

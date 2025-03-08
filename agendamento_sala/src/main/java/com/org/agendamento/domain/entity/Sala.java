@@ -2,13 +2,13 @@ package com.org.agendamento.domain.entity;
 
 import com.org.agendamento.domain.entity.enums.Status;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.UUID;
 
+@Getter
+@Setter
 @Entity
 @Builder
 @Table(name = "sala")
@@ -18,7 +18,7 @@ public class Sala implements Serializable {
 
     @Id
     @Column(name = "id_sala", nullable = false)
-    private UUID id = UUID.randomUUID();
+    private final UUID id = UUID.randomUUID();
 
     @Column(nullable = false)
     private String descricao;
