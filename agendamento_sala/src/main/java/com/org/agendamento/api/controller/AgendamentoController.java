@@ -5,6 +5,7 @@ import com.org.agendamento.api.dto.response.AgendamentoResponse;
 import com.org.agendamento.api.mapper.AgendamentoMapper;
 import com.org.agendamento.domain.service.AgendamentoService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,9 +33,9 @@ public class AgendamentoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<AgendamentoResponse>> obterAgendamentos() {
+    public ResponseEntity<List<AgendamentoResponse>> obterAgendamentosOrdenadosPorData() {
 
-        var agendamentos = agendamentoService.obterTodos();
+        var agendamentos = agendamentoService.obterTodosOrdenados();
 
         var agendamentosResponse = agendamentos
                 .stream()
@@ -47,6 +48,7 @@ public class AgendamentoController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public void salvarAgendamento(@RequestBody @Valid AgendamentoForm form) {
 
         agendamentoService.salvarAgendamento(form);
