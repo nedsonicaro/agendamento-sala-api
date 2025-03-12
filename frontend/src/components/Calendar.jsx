@@ -1,47 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { getSchedules } from '../services/api.jsx';
-import EventDetails from './EventDetail.jsx';
 
 const localizer = momentLocalizer(moment);
 
-const MyCalendar = () => {
-    const [events, setEvents] = useState([]);
-    const [selectedEvent, setSelectedEvent] = useState(null);
-
-    useEffect(() => {
-        const fetchSchedules = async () => {
-            const response = await getSchedules();
-            const formattedEvents = response.data.map(schedule => ({
-                title: schedule.descricao,
-                start: new Date(schedule.data),
-                end: new Date(schedule.data),
-                allDay: false,
-                resource: schedule,
-            }));
-            setEvents(formattedEvents);
-        };
-
-        fetchSchedules();
-    }, []);
-
-    const handleSelectEvent = (event) => {
-        setSelectedEvent(event.resource);
-    };
-
+const MyCalendar = ({ events, onDaySelect }) => {
     return (
-        <div>
+        <div style={{ flex: 1, padding: '10px' }}>
             <Calendar
                 localizer={localizer}
                 events={events}
                 startAccessor="start"
                 endAccessor="end"
-                onSelectEvent={handleSelectEvent}
+                onSelectSlot={(slotInfo) => onDaySelect(slotInfo.start)}
+                selectable
                 style={{ height: 500 }}
             />
-            {selectedEvent && <EventDetails event={selectedEvent} onClose={() => setSelectedEvent(null)} />}
         </div>
     );
 };

@@ -29,7 +29,7 @@ public class Sala implements Serializable {
     @Column(nullable = false)
     private int capacidade;
 
-    @Column(nullable = false)
+    @Column(name = "status", nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private Status status;
 }

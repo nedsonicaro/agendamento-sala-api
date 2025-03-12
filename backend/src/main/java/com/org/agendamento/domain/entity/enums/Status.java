@@ -5,9 +5,9 @@ import lombok.Getter;
 @Getter
 public enum Status {
 
-    ATIVA(1),
-    INATIVA(2),
-    EM_MANUTENCAO(3);
+    ATIVA(0),
+    INATIVA(1),
+    EM_MANUTENCAO(2);
 
     private final int tipoStatus;
 
