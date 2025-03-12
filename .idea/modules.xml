@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/agendamento-sala-api.iml" filepath="$PROJECT_DIR$/.idea/agendamento-sala-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/agendamento-application.iml" filepath="$PROJECT_DIR$/.idea/modules/agendamento-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/agendamento-application.main.iml" filepath="$PROJECT_DIR$/.idea/modules/agendamento-application.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/agendamento-application.test.iml" filepath="$PROJECT_DIR$/.idea/modules/agendamento-application.test.iml" />
     </modules>
   </component>
 </project>
