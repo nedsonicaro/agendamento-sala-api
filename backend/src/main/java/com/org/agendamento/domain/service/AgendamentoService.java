@@ -14,6 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.UUID;
 
@@ -84,8 +86,16 @@ public class AgendamentoService {
     private void validarSalaEExistenciaDeAgendamentoAoAtualizar(Sala sala,
                                                                 Agendamento agendamento,
                                                                 AgendamentoForm form) {
+        var dataAgendamento = agendamento.getData().toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime();
+
+        var dataForm = form.data().toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime();
+
         if (agendamento.getSala().equals(sala)
-                && agendamento.getData().equals(form.data())
+                && dataAgendamento.equals(dataForm)
                 && agendamento.getHorario().equals(form.horario())
                 && agendamento.getTurno().equals(form.turno())) return;
 

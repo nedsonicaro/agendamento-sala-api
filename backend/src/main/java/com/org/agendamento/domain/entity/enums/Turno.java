@@ -5,9 +5,9 @@ import lombok.Getter;
 @Getter
 public enum Turno {
 
-    MANHA("Manhã"),
-    TARDE("Tarde"),
-    NOITE("Noite");
+    MANHA("MANHA"),
+    TARDE("TARDE"),
+    NOITE("NOITE");
 
     private final String tipoTurno;
 

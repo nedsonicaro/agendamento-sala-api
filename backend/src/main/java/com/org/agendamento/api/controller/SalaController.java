@@ -24,7 +24,7 @@ public class SalaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SalaResponse> obtterPorId(@PathVariable UUID id) {
+    public ResponseEntity<SalaResponse> obterPorId(@PathVariable UUID id) {
 
         var sala = salaService.obterPorId(id);
         var salaResponse = SalaMapper.paraSalaResponse(sala);
